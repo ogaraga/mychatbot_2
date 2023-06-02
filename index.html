@@ -162,8 +162,8 @@
                 "COST of learning programming?":"it depends on your desire and scope of what you want",
            }; 
        
-const boots = Object.fromEntries(Object.entries(bot$Me).map(([key, val]) => 
-[key.toLowerCase(), val]));
+const boots = Object.fromEntries(Object.entries(bot$Me).map(([user, bots]) => 
+[user.toLowerCase(), bots.toLowerCase()]));
        
 
            clickOnMe.onclick = ()=>{
