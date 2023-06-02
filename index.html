@@ -28,7 +28,7 @@
            let clickOnMe = document.getElementById("lets_chat");
            let endChat = document.getElementById("end");
            let chatBox = document.getElementById("chatbox");
-          
+        let input;
            bot$Me = {
                 "see you later": "Great! bye",
                 "how are you doing?":"wonderful and you friend?",
@@ -163,7 +163,7 @@
            }; 
        
 const boots = Object.fromEntries(Object.entries(bot$Me).map(([user, bots]) => 
-[user.toLowerCase(), bots.toLowerCase()]));
+[user.toLowerCase().replace(/[w/W/S/s][a-z][A-Z][^d/D]/g, "").trim(input), bots.toLowerCase().replace(/[w/W/S/s][a-z][A-Z][^d/D]/g, "").trim(input)]));
        
 
            clickOnMe.onclick = ()=>{
@@ -194,13 +194,12 @@ const boots = Object.fromEntries(Object.entries(bot$Me).map(([user, bots]) =>
          var textbox = document.getElementById("textbox");
          var bot_texts = document.getElementById("chatbottext");
          var time = new Date().toLocaleString({}, {hour:"2-digit",minute:"2-digit"});
-         
          textbox.addEventListener("keydown", (e)=>{  
             if(e.code == "Enter"){
            bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
            bot_texts.style.color = "crimson";
             bot_texts.style.float = "right";
-           let input = textbox.value;
+             let input = textbox.value;
            textbox.value = ""; 
             setTimeout(() => {
                 if(input in boots){
@@ -227,7 +226,7 @@ const boots = Object.fromEntries(Object.entries(bot$Me).map(([user, bots]) =>
     
            bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
            bot_texts.style.color = "crimson";
-            bot_texts.style.float = "right";
+           bot_texts.style.float = "right";
            let input = textbox.value;
            textbox.value = ""; 
             setTimeout(() => {
