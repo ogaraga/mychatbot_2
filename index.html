@@ -22,97 +22,14 @@
         </div>
     </div>
     <script>
+           var bot$Me;
            const enterMe = document.getElementById("enter");
            var botChats = document.getElementById("chatbottext");
            let clickOnMe = document.getElementById("lets_chat");
            let endChat = document.getElementById("end");
            let chatBox = document.getElementById("chatbox");
-           clickOnMe.onclick = ()=>{
-            if(chatBox.style.display == "none"){
-                chatBox.style.display = "block";
-                clickOnMe.style.display = "none";
-            }
-            else{
-                clickOnMe.style.display = "block";
-                chatBox.style.display = "none";
-         
-            }
-        };
-           endChat.onclick = ()=>{
-            if(chatBox.style.display == "block"){
-                chatBox.style.display = "none";
-                clickOnMe.style.display = "block";
-                botChats.innerHTML = "";
-            }
-            else{
-                chatBox.style.display = "block";
-                clickOnMe.style.display = "none";
-            
-            }
-           }
-           
-
-         var textbox = document.getElementById("textbox");
-         var bot_texts = document.getElementById("chatbottext");
-         var time = new Date().toLocaleString({}, {hour:"2-digit",minute:"2-digit"});
-         
-         textbox.addEventListener("keydown", (e)=>{  
-            if(e.code == "Enter"){
-           bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
-           bot_texts.style.color = "crimson";
-            bot_texts.style.float = "right";
-           let input = textbox.value;
-           textbox.value = ""; 
-            setTimeout(() => {
-                if(input in bot$Me){
-                bot_texts.innerHTML = ` ${bot$Me[input]}<br>${ time}` + "<br>";
-                bot_texts.style.float = "left";
-                bot_texts.style.color = "green";
-                bot_texts.scrollIntoView({behavior:"auto"});
-                
-            }
-        
-            else{
-                bot_texts.innerHTML = `please try asking something else ${time}`; 
-                bot_texts.style.float = "left";
-                bot_texts.style.color = "green";
-                bot_texts.scrollIntoView({behavior:"auto"});
-                
-            }         
-            }, 3500);
-               
-        }  
-        
-    });
-    enterMe.addEventListener("click", ()=>{  
-    
-           bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
-           bot_texts.style.color = "crimson";
-            bot_texts.style.float = "right";
-           let input = textbox.value;
-           textbox.value = ""; 
-            setTimeout(() => {
-                if(input in bot$Me){
-                bot_texts.innerHTML = ` ${bot$Me[input]}<br>${ time}` + "<br>";
-                bot_texts.style.float = "left";
-                bot_texts.style.color = "green";
-                bot_texts.scrollIntoView({behavior:"auto"});
-                
-            }
-        
-            else{
-                bot_texts.innerHTML = `please try asking something else ${time}`; 
-                bot_texts.style.float = "left";
-                bot_texts.style.color = "green";
-                bot_texts.scrollIntoView({behavior:"auto"});
-                
-            }         
-            }, 3500);
-               
-        });
-           
-
-         var bot$Me = {
+          
+           bot$Me = {
                 "see you later": "Great! bye",
                 "how are you doing?":"wonderful and you friend?",
                 "how old are you?": "I'm ageless!",
@@ -228,23 +145,112 @@
                 "who created javascript?":"Brendan Eich",
                 "what's that?":"never mind",
                 "good!":"Thanks!",
-                "good":"thank you!",
+                "Good":"thank you!",
                 "ok then":"yep, then!",
-                "ok no problem":"yea buddy!",
-                "have a nice day":"same here",
-                "do have a great day":"great, same to you buddy!",
-                "talk to you later":"ok, bye",
-                "bye":"enjoy yourself buddy!",
-                "can i ask you a question?": "please do",
-                "tell me about football": "soccer started in 1936 or thereabout in greece",
-                "who is the best player in the world?": "he is late!",
-                "what is his name?": "who?",
-                "the best player in the world": "i already told you!",
-                "where are you from?": "i'm always around in the cloud",
-                "how can i learn coding?":"it is simple! just contact:port-ogaraga.vercel.app/home.html!",
-                "cost of learning programming?":"it depends on your desire and scope of what you want",
-            }; 
+                "Ok no problem":"yea buddy!",
+                "Have a nice day":"same here",
+                "Do have a great day":"great, same to you buddy!",
+                "Talk to you later":"ok, bye",
+                "Bye":"enjoy yourself buddy!",
+                "Can i ask you a question?": "please do",
+                "Tell me about football": "soccer started in 1936 or thereabout in greece",
+                "Who is the best player in the world?": "he is late!",
+                "What is his name?": "who?",
+                "The best player in the world": "i already told you!",
+                "Where are you from?": "i'm always around in the cloud",
+                "How can i learn coding?":"it is simple! just contact:port-ogaraga.vercel.app/home.html!",
+                "COST of learning programming?":"it depends on your desire and scope of what you want",
+           }; 
+       
+const boots = Object.fromEntries(Object.entries(bot$Me).map(([key, val]) => 
+[key.toLowerCase(), val]));
+       
+
+           clickOnMe.onclick = ()=>{
+            if(chatBox.style.display == "none"){
+                chatBox.style.display = "block";
+                clickOnMe.style.display = "none";
+            }
+            else{
+                clickOnMe.style.display = "block";
+                chatBox.style.display = "none";
+         
+            }
+        };
+           endChat.onclick = ()=>{
+            if(chatBox.style.display == "block"){
+                chatBox.style.display = "none";
+                clickOnMe.style.display = "block";
+                botChats.innerHTML = "";
+            }
+            else{
+                chatBox.style.display = "block";
+                clickOnMe.style.display = "none";
+            
+            }
+           }
+           
+
+         var textbox = document.getElementById("textbox");
+         var bot_texts = document.getElementById("chatbottext");
+         var time = new Date().toLocaleString({}, {hour:"2-digit",minute:"2-digit"});
+         
+         textbox.addEventListener("keydown", (e)=>{  
+            if(e.code == "Enter"){
+           bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
+           bot_texts.style.color = "crimson";
+            bot_texts.style.float = "right";
+           let input = textbox.value;
+           textbox.value = ""; 
+            setTimeout(() => {
+                if(input in boots){
+                bot_texts.innerHTML = ` ${boots[input]}<br>${ time}` + "<br>";
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }
+        
+            else{
+                bot_texts.innerHTML = `please try asking something else or change the Caps ${time}`; 
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }         
+            }, 3500);
+               
+        }  
+        
+    });
+    enterMe.addEventListener("click", ()=>{  
     
+           bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
+           bot_texts.style.color = "crimson";
+            bot_texts.style.float = "right";
+           let input = textbox.value;
+           textbox.value = ""; 
+            setTimeout(() => {
+                if(input in boots){
+                bot_texts.innerHTML = ` ${boots[input]}<br>${ time}` + "<br>";
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }
+        
+            else{
+                bot_texts.innerHTML = `please try asking something else or change the caps ${time}`; 
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }         
+            }, 3500);
+               
+        });  
+               
+                
     
     </script>
 </body>
